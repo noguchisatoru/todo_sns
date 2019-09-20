@@ -1,0 +1,10 @@
+{
+    "eslint.autoFixOnSave": false ,
+    "files.associations": {
+        "*.vue": "vue"
+    },
+    "eslint.validata": [
+        "javascript",
+        {"autoFix": true, "language": "vue"}
+    ]
+}
