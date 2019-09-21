@@ -29,6 +29,7 @@
         <button @click="changeDisplay">
           新規登録はこちら
         </button>
+        <img src="@/assets/google_signin.png" @click="googleLogin">
       </div>
       <div v-else>
         <button @click="addUser">
@@ -72,9 +73,9 @@ export default {
   methods: {
     async doLogin () {
       try {
-        const user = await auth.signInWithEmailAndPassword(this.email, this.password)
+        const user = await auth().signInWithEmailAndPassword(this.email, this.password)
         if (user) {
-          await this.$store.dispatch(SET_USERDATA, auth.currentUser.uid)
+          await this.$store.dispatch(SET_USERDATA, auth().currentUser.uid)
           this.$router.push('/home')
         }
       } catch (e) {
@@ -84,13 +85,26 @@ export default {
 
     async addUser () {
       try {
-        const user = await auth.createUserWithEmailAndPassword(this.email, this.password)
+        const user = await auth().createUserWithEmailAndPassword(this.email, this.password)
         if (user) {
-          const userdata = auth.currentUser
+          const userdata = auth().currentUser
           this.$store.dispatch(ADD_USER, { userName: this.username, uId: userdata.uid })
           await this.$store.dispatch(SET_USERDATA, userdata.uid)
           alert('登録完了' + userdata.email)
           this.$router.push('/home')
+        }
+      } catch (e) {
+        alert(e)
+      }
+    },
+
+    async googleLogin () {
+      try {
+        const googleAuth = await new auth.GoogleAuthProvider()
+        if (googleAuth) {
+          auth().signInWithPopup(googleAuth).then((result) => {
+            this.$router.push('/home')
+          })
         }
       } catch (e) {
         alert(e)
