@@ -100,11 +100,12 @@ export default {
 
     async googleLogin () {
       try {
-        const googleAuth = await new auth.GoogleAuthProvider()
-        if (googleAuth) {
-          auth().signInWithPopup(googleAuth).then((result) => {
-            this.$router.push('/home')
-          })
+        const googleAuth = new auth.GoogleAuthProvider()
+        const googleUser = await auth().signInWithPopup(googleAuth)
+        if (googleUser) {
+          const googleData = auth().currentUser
+          await this.$store.dispatch(ADD_USER, { userName: googleData.displayName, uId: googleData.uid })
+          this.$router.push('/home')
         }
       } catch (e) {
         alert(e)
