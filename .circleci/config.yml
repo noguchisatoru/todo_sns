@@ -23,10 +23,10 @@ jobs:
     steps:
       - checkout
       - run: apk add --no-cache nodejs npm yarn
+      - run: echo $ENV_FILE | base64 -d > .env
       - run: yarn
       - run: yarn build
       - run: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
-      - run: echo $ENV_FILE | base64 -d > ${HOME}/.env
       - run: gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
       - run: gcloud app deploy --quiet --project endless-force-252718
 
