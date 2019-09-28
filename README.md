@@ -1,22 +1,23 @@
-# todo_SNS
+# ToDoSNS
 
-> My phenomenal Nuxt.js project
+> ToDoSNS nuxt.js project
 
-## Build Setup
+## Docker Setup(環境設定)
 
 ``` bash
-# install dependencies
-$ npm run install
+# ビルドとコンテナの作成
+$ docker-compose build
+$ docker-compose up -d
 
-# serve with hot reload at localhost:3000
+# コンテナ内に入る
+$ $ docker-compose exec web /bin/ash
+
+# サーバの起動（http://localhost:3000）
 $ npm run dev
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
 ```
+
+## デプロイ
+> CircleCIに設定しているためGithubにpushで自動で行われる。
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
