@@ -26,7 +26,7 @@ jobs:
       - run: yarn
       - run: yarn build
       - run: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
-      - run: echo $ENV_FILE | base64 --decode > .env
+      - run: echo $ENV_FILE | base64 --decode > ${HOME}/.env
       - run: gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
       - run: gcloud app deploy app.yaml --project endless-force-252718
 
