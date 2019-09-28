@@ -9,7 +9,11 @@ module.exports = {
   },
   extends: [
     '@nuxtjs',
-    'plugin:nuxt/recommended'
+    'standard',
+    'plugin:vue/recommended'
+  ],
+  plugins: [
+    'vue'
   ],
   // add your custom rules here
   rules: {
