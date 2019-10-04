@@ -1,36 +1,46 @@
 <template>
-  <div class="content">
+  <div class="content box">
     <b-field label="ToDo">
       <b-input maxlength="100" type="textarea" />
     </b-field>
     <div class="level is-mobile">
       <div class="level-left">
         <div class="block">
-          <b-checkbox
-            v-model="checkboxGroup"
+          <b-radio
+            v-model="radio"
+            name="name"
             native-value="Work"
           >
             Work
-          </b-checkbox>
-          <b-checkbox
-            v-model="checkboxGroup"
-            native-value="Enjoy"
-          >
-            Enjoy
-          </b-checkbox>
-          <b-checkbox
-            v-model="checkboxGroup"
+          </b-radio>
+          <b-radio
+            v-model="radio"
+            name="name"
             native-value="Buy"
           >
             Buy
-          </b-checkbox>
+          </b-radio>
+          <b-radio
+            v-model="radio"
+            name="name"
+            native-value="Enjoy"
+          >
+            Enjoy
+          </b-radio>
+          <b-radio
+            v-model="radio"
+            name="name"
+            native-value="Free"
+          >
+            Free
+          </b-radio>
         </div>
       </div>
       <div class="level-right">
         <b-switch
           v-model="isSwitchedCustom"
-          true-value="非公開"
-          false-value="公開"
+          true-value="公開"
+          false-value="非公開"
         >
           {{ isSwitchedCustom }}
         </b-switch>
@@ -44,7 +54,8 @@
 export default {
   data () {
     return {
-      isSwitchedCustom: '公開'
+      isSwitchedCustom: '公開',
+      radio: 'Free'
     }
   }
 }

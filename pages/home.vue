@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <Navbar />
     <div class="tile is-ancestor">
       <div class="tile is-5 is-vertical is-parent">
         <div class="tile is-child box">
@@ -33,31 +32,27 @@
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
-import Navbar from '~/components/Navbar.vue'
 import Profilecard from '~/components/Profilecard.vue'
 import Mytodo from '~/components/Mytodo.vue'
 import Todoinput from '~/components/Todoinput.vue'
 import Todoarticle from '~/components/Todoarticle.vue'
 import Favtodo from '~/components/Favtodo.vue'
 import Morebutton from '~/components/Morebutton.vue'
-import Footer from '~/components/Footer.vue'
 
 export default {
+  layout: 'homelayout',
 
   components: {
-    Navbar,
     Profilecard,
     Mytodo,
     Todoinput,
     Todoarticle,
     Favtodo,
-    Morebutton,
-    Footer
+    Morebutton
   },
   data () {
     return {

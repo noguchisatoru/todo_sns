@@ -20,7 +20,7 @@
     "buefy": "^0.8.4",
     "firebase": "^6.6.2",
     "nuxt": "^2.0.0",
-    "nuxt-buefy": "^0.3.15",
+    "nuxt-buefy": "^0.3.16",
     "vuexfire": "^3.2.0-alpha.0"
   },
   "devDependencies": {
