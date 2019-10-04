@@ -13,7 +13,7 @@
         Home
       </b-navbar-item>
       <b-navbar-item href="#">
-        Documentation
+        myprofile
       </b-navbar-item>
       <b-navbar-item>
         <b-radio
