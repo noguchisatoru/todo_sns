@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import { INIT_USER, SET_USERDATA, ADD_USER } from '../store/action-types'
 import { auth } from '~/plugins/firebase'
 import Logo from '~/components/Logo.vue'
 import Footer from '~/components/Footer.vue'
@@ -67,7 +66,7 @@ export default {
   },
 
   created () {
-    this.$store.dispatch(INIT_USER)
+    this.$store.dispatch('user/initUser')
   },
 
   methods: {
@@ -75,7 +74,7 @@ export default {
       try {
         const user = await auth().signInWithEmailAndPassword(this.email, this.password)
         if (user) {
-          await this.$store.dispatch(SET_USERDATA, auth().currentUser.uid)
+          await this.$store.dispatch('user/setUserdata', auth().currentUser.uid)
           this.$router.push('/home')
         }
       } catch (e) {
@@ -88,8 +87,8 @@ export default {
         const user = await auth().createUserWithEmailAndPassword(this.email, this.password)
         if (user) {
           const userdata = auth().currentUser
-          this.$store.dispatch(ADD_USER, { userName: this.username, uId: userdata.uid })
-          await this.$store.dispatch(SET_USERDATA, userdata.uid)
+          this.$store.dispatch('user/adduser', { user_name: this.username, uId: userdata.uid })
+          await this.$store.dispatch('user/setUserdata', userdata.uid)
           alert('登録完了' + userdata.email)
           this.$router.push('/home')
         }
@@ -104,7 +103,7 @@ export default {
         const googleUser = await auth().signInWithPopup(googleAuth)
         if (googleUser) {
           const googleData = auth().currentUser
-          await this.$store.dispatch(ADD_USER, { userName: googleData.displayName, uId: googleData.uid })
+          await this.$store.dispatch('user/addUser', { user_name: googleData.displayName, uId: googleData.uid })
           this.$router.push('/home')
         }
       } catch (e) {
