@@ -1,7 +1,7 @@
 <template>
   <div class="content box">
     <b-field label="ToDo">
-      <b-input maxlength="100" type="textarea" />
+      <b-input v-model="text" maxlength="100" type="textarea" />
     </b-field>
     <div class="level is-mobile">
       <div class="level-left">
@@ -38,25 +38,48 @@
       </div>
       <div class="level-right">
         <b-switch
-          v-model="isSwitchedCustom"
+          v-model="release"
           true-value="公開"
           false-value="非公開"
         >
-          {{ isSwitchedCustom }}
+          {{ release }}
         </b-switch>
-        <b-button>投稿</b-button>
+        <b-button @click="addTodo">
+          投稿
+        </b-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { auth } from '~/plugins/firebase'
+
 export default {
   data () {
     return {
-      isSwitchedCustom: '公開',
+      text: '',
+      release: '公開',
       radio: 'Free'
     }
+  },
+
+  created () {
+    this.$store.dispatch('todo/initTodos')
+  },
+
+  methods: {
+    async addTodo () {
+      try {
+        const userdata = auth().currentUser
+        await this.$store.dispatch('todo/addTodo', { userId: userdata.uid, text: this.text, createdAt: 'a', tag: this.radio, release: this.release })
+        alert('投稿しました')
+        this.text = ''
+      } catch (e) {
+        alert(e)
+      }
+    }
+
   }
 }
 </script>
