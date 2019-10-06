@@ -1,59 +1,22 @@
 <template>
-  <section class="container">
-    <div>
+  <div class="container">
+    <div class="has-text-centered">
       <Logo />
-      <h1 v-if="isActive" class="title">
-        ログイン画面
-      </h1>
-      <h1 v-else class="title">
-        新規登録
-      </h1>
-      <table>
-        <tr v-show="!isActive">
-          <th>ユーザ名</th>
-          <td><input v-model.trim="username" type="text"></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td><input v-model.trim="email" type="email"></td>
-        </tr>
-        <tr>
-          <th>パスワード</th>
-          <td><input v-model.trim="password" type="password"></td>
-        </tr>
-      </table>
-      <div v-if="isActive">
-        <button @click="doLogin">
-          ログイン
-        </button>
-        <button @click="changeDisplay">
-          新規登録はこちら
-        </button>
-        <img src="@/assets/google_signin.png" @click="googleLogin">
-      </div>
-      <div v-else>
-        <button @click="addUser">
-          新規登録
-        </button>
-        <button @click="changeDisplay">
-          ログインはこちら
-        </button>
-      </div>
-      <Footer />
     </div>
-  </section>
+    <Login />
+  </div>
 </template>
 
 <script>
 import { auth } from '~/plugins/firebase'
 import Logo from '~/components/Logo.vue'
-import Footer from '~/components/Footer.vue'
+import Login from '~/components/Login.vue'
 
 export default {
 
   components: {
     Logo,
-    Footer
+    Login
   },
   data () {
     return {
