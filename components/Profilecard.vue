@@ -9,13 +9,27 @@
         </div>
         <div class="media-content">
           <p class="title is-4">
-            John Smith
+            {{ user.userName }}
           </p>
           <p class="subtitle is-6">
-            @johnsmith
+            @{{ user.uId }}
           </p>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+
+  computed: {
+    ...mapState({
+      user: state => state.user.user
+    })
+  }
+
+}
+</script>

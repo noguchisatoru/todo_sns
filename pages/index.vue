@@ -87,7 +87,7 @@ export default {
         const user = await auth().createUserWithEmailAndPassword(this.email, this.password)
         if (user) {
           const userdata = auth().currentUser
-          this.$store.dispatch('user/adduser', { user_name: this.username, uId: userdata.uid })
+          this.$store.dispatch('user/addUser', { userName: this.username, uId: userdata.uid })
           await this.$store.dispatch('user/setUserdata', userdata.uid)
           alert('登録完了' + userdata.email)
           this.$router.push('/home')
@@ -103,7 +103,7 @@ export default {
         const googleUser = await auth().signInWithPopup(googleAuth)
         if (googleUser) {
           const googleData = auth().currentUser
-          await this.$store.dispatch('user/addUser', { user_name: googleData.displayName, uId: googleData.uid })
+          await this.$store.dispatch('user/addUser', { userName: googleData.displayName, uId: googleData.uid })
           this.$router.push('/home')
         }
       } catch (e) {

@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Profilecard from '~/components/Profilecard.vue'
 import Mytodo from '~/components/Mytodo.vue'
 import Todoinput from '~/components/Todoinput.vue'
@@ -54,10 +55,17 @@ export default {
     Favtodo,
     Morebutton
   },
+
   data () {
     return {
       checkboxGroup: []
     }
+  },
+  computed: {
+    ...mapState({
+      user: state => state.user.user
+    })
   }
+
 }
 </script>

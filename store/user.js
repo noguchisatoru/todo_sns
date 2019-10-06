@@ -33,16 +33,16 @@ export const actions = {
     try {
       await usersRef.doc(userdata.uId).set({
 
-        user_name: userdata.user_name,
-        user_introduction: 'test',
-        created_at: '2019年10月01日',
-        image_color: 'blue'
+        userName: userdata.userName,
+        userIntroduction: 'test',
+        createdAt: '2019年10月01日',
+        imageColor: 'blue'
 
       })
 
       await followerRef.doc(userdata.uId).set({
 
-        following_user_id: []
+        followingUserId: []
 
       })
     } catch (e) {
@@ -54,10 +54,10 @@ export const actions = {
       const userdata = await usersRef.doc(uid).get()
       commit('setUser', {
         uId: uid,
-        user_name: userdata.data().user_name,
-        user_introduction: userdata.data().user_introduction,
-        created_at: userdata.data().created_at,
-        image_color: userdata.data().image_color
+        userName: userdata.data().userName,
+        userIntroduction: userdata.data().userIntroduction,
+        createdAt: userdata.data().createdAt,
+        imageColor: userdata.data().imageColor
       })
     } catch (e) {
       // eslint-disable-next-line no-console
