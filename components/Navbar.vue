@@ -12,7 +12,7 @@
       <b-navbar-item href="#">
         Home
       </b-navbar-item>
-      <b-navbar-item href="#">
+      <b-navbar-item href="/myprofile">
         myprofile
       </b-navbar-item>
       <b-navbar-item>
