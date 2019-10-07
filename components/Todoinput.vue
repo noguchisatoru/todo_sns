@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+import 'dayjs/locale/ja'
 import { mapState } from 'vuex'
 import { auth } from '~/plugins/firebase'
 
@@ -78,8 +80,9 @@ export default {
   methods: {
     async addTodo () {
       try {
+        dayjs.locale('ja')
         const userdata = auth().currentUser
-        await this.$store.dispatch('todo/addTodo', { todoAuthor: this.user.userName, userId: userdata.uid, text: this.text, createdAt: 'a', tag: this.radio, release: this.release })
+        await this.$store.dispatch('todo/addTodo', { todoAuthor: this.user.userName, userId: userdata.uid, text: this.text, createdAt: dayjs().format('YYYY/MM/DD/HH:mm:ss'), tag: this.radio, release: this.release })
         alert('投稿しました')
         this.text = ''
       } catch (e) {

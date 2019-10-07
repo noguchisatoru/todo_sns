@@ -24,7 +24,7 @@ export const getters = {
 
 export const actions = {
   initTodos: firestoreAction((context) => {
-    return context.bindFirestoreRef('todos', todosRef)
+    return context.bindFirestoreRef('todos', todosRef.orderBy('createdAt', 'desc'))
   }),
   addTodo: firestoreAction(async (context, tododata) => {
     try {
@@ -33,7 +33,7 @@ export const actions = {
         todoAuthor: tododata.todoAuthor,
         userId: tododata.userId,
         text: tododata.text,
-        createdAt: '2019年10月01日',
+        createdAt: tododata.createdAt,
         state: '予定',
         tag: tododata.tag,
         release: tododata.release
