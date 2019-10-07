@@ -48,7 +48,7 @@
     <template slot="end">
       <b-navbar-item tag="div">
         <div class="buttons">
-          <a class="button is-light">
+          <a class="button is-light" @click="logout">
             Log out
           </a>
         </div>
@@ -58,10 +58,20 @@
 </template>
 
 <script>
+import { auth } from '~/plugins/firebase'
+
 export default {
   data () {
     return {
       radio: 'Jack'
+    }
+  },
+
+  methods: {
+    async logout () {
+      this.$router.push('/')
+      await auth().signOut()
+      this.$store.dispatch('user/logoutUser')
     }
   }
 }

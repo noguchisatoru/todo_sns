@@ -63,5 +63,8 @@ export const actions = {
       // eslint-disable-next-line no-console
       console.log(e)
     }
+  },
+  logoutUser: ({ commit }) => {
+    commit('logoutUser')
   }
 }
