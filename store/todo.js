@@ -30,6 +30,7 @@ export const actions = {
     try {
       await todosRef.add({
 
+        todoAuthor: tododata.todoAuthor,
         userId: tododata.userId,
         text: tododata.text,
         createdAt: '2019年10月01日',

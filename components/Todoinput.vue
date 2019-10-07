@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { auth } from '~/plugins/firebase'
 
 export default {
@@ -64,6 +65,12 @@ export default {
     }
   },
 
+  computed: {
+    ...mapState({
+      user: state => state.user.user
+    })
+  },
+
   created () {
     this.$store.dispatch('todo/initTodos')
   },
@@ -72,7 +79,7 @@ export default {
     async addTodo () {
       try {
         const userdata = auth().currentUser
-        await this.$store.dispatch('todo/addTodo', { userId: userdata.uid, text: this.text, createdAt: 'a', tag: this.radio, release: this.release })
+        await this.$store.dispatch('todo/addTodo', { todoAuthor: this.user.userName, userId: userdata.uid, text: this.text, createdAt: 'a', tag: this.radio, release: this.release })
         alert('投稿しました')
         this.text = ''
       } catch (e) {

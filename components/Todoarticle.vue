@@ -9,10 +9,10 @@
       <div class="media-content">
         <div class="content" @click="isImageModalActive = true">
           <p>
-            <strong>todo.</strong> <small>@{{todo.userId}}</small> <small>{{ todo.createdAt }}</small> <small>{{ todo.tag }}</small>
+            <strong>{{ todo.todoAuthor }}</strong> <small>@{{ todo.userId }}</small> <small>{{ todo.createdAt }}</small> <small>{{ todo.tag }}</small>
             <br>
             {{ todo.text }}
-            </p>
+          </p>
         </div>
         <nav class="level is-mobile">
           <div class="level-left">
