@@ -42,6 +42,8 @@ import Favtodo from '~/components/Favtodo.vue'
 import Morebutton from '~/components/Morebutton.vue'
 
 export default {
+  middleware: 'authenticated',
+
   layout: 'homelayout',
 
   components: {
