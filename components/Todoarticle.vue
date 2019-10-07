@@ -1,18 +1,18 @@
 <template>
   <section>
-    <article class="media" @click="isImageModalActive = true">
+    <article v-for="todo in todos" :key="todo.uId" class="media">
       <figure class="media-left">
         <p class="image is-64x64">
           <img src="https://bulma.io/images/placeholders/128x128.png">
         </p>
       </figure>
       <div class="media-content">
-        <div class="content">
+        <div class="content" @click="isImageModalActive = true">
           <p>
-            <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small> <small>tag</small>
+            <strong>todo.</strong> <small>@{{todo.userId}}</small> <small>{{ todo.createdAt }}</small> <small>{{ todo.tag }}</small>
             <br>
-            Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-          </p>
+            {{ todo.text }}
+            </p>
         </div>
         <nav class="level is-mobile">
           <div class="level-left">
@@ -35,11 +35,25 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
       isImageModalActive: false
     }
+  },
+
+  computed: {
+    ...mapState({
+      todos: state => state.todo.todos
+    })
+  },
+
+  mounted () {
+    this.$store.dispatch('todo/initTodos')
+  },
+
+  methods: {
   }
 }
 </script>

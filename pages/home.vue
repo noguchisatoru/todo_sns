@@ -26,8 +26,6 @@
         <div class="tile is-child">
           <Todoinput />
           <Todoarticle />
-          <Todoarticle />
-          <Todoarticle />
         </div>
       </div>
     </div>
