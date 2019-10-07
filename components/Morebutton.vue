@@ -1,7 +1,9 @@
 <template>
   <div class=" has-text-centered">
-    <button class="button">
+    <b-button tag="router-link"
+     to="/myprofile"
+     type="is-link">
       もっとみる
-    </button>
+    </b-button>
   </div>
 </template>
