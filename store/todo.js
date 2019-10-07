@@ -16,12 +16,15 @@ export const mutations = {
 
 export const getters = {
   todo: state => state.todo,
-  todos: state => state.todos
+  todos: state => state.todos,
+  mytodos: state => (uid) => {
+    return state.todos.filter(todo => todo.userId === uid)
+  }
 }
 
 export const actions = {
   initTodos: firestoreAction((context) => {
-    return context.bindFirestoreRef('Todos', todosRef)
+    return context.bindFirestoreRef('todos', todosRef)
   }),
   addTodo: firestoreAction(async (context, tododata) => {
     try {

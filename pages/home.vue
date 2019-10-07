@@ -9,7 +9,6 @@
               MyToDo
             </p>
             <Mytodo />
-            <Mytodo />
             <div>
               <Morebutton />
             </div>
@@ -65,6 +64,10 @@ export default {
     ...mapState({
       user: state => state.user.user
     })
+  },
+
+  mounted () {
+    this.$store.dispatch('todo/initTodos')
   }
 
 }

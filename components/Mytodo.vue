@@ -1,15 +1,15 @@
 <template>
   <section>
-    <article class="media" @click="isImageModalActive = true">
+    <article v-for="todo in mytodos(user.uId)" :key="todo.uId" class="media">
       <div class="media-content">
-        <div class="content">
+        <div class="content" @click="isImageModalActive = true">
           <p>
-            Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+            {{ todo.text }}
           </p>
         </div>
         <nav class="level is-mobile">
           <div class="level-left">
-            <p>tag</p>
+            <p>{{ todo.tag }}</p>
           </div>
           <div class="level-right">
             <b-dropdown aria-role="list">
@@ -41,11 +41,28 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 export default {
   data () {
     return {
       isImageModalActive: false
     }
+  },
+
+  computed: {
+    ...mapState({
+      user: state => state.user.user,
+      todos: state => state.todo.todos
+    }),
+    ...mapGetters({ mytodos: 'todo/mytodos',
+      todotest: 'todo/todos' })
+  },
+
+  mounted () {
+    this.$store.dispatch('todo/initTodos')
+  },
+
+  methods: {
   }
 }
 </script>
