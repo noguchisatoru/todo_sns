@@ -14,18 +14,18 @@
           <div class="level-right">
             <b-dropdown aria-role="list">
               <button slot="trigger" class="button is-small">
-                <span>Click me!</span>
+                <span>{{ todo.state }}</span>
                 <b-icon icon="menu-down" />
               </button>
 
-              <b-dropdown-item aria-role="listitem">
-                Action
+              <b-dropdown-item aria-role="listitem" @click="statusChange('作業中',todo.documentId)">
+                作業中
               </b-dropdown-item>
-              <b-dropdown-item aria-role="listitem">
-                Another action
+              <b-dropdown-item aria-role="listitem" @click="statusChange('完了',todo.documentId)">
+                完了
               </b-dropdown-item>
-              <b-dropdown-item aria-role="listitem">
-                Something else
+              <b-dropdown-item aria-role="listitem" @click="statusChange('予定',todo.documentId)">
+                予定
               </b-dropdown-item>
             </b-dropdown>
           </div>
@@ -63,6 +63,9 @@ export default {
   },
 
   methods: {
+    statusChange (status, id) {
+      this.$store.dispatch('todo/statusChange', { state: status, documentId: id })
+    }
   }
 }
 </script>

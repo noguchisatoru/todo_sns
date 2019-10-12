@@ -44,5 +44,15 @@ export const actions = {
     } catch (e) {
       alert(e)
     }
-  })
+  }),
+
+  statusChange: async (context, statedata) => {
+    try {
+      await todosRef.doc(String(statedata.documentId)).update({
+        state: statedata.state
+      })
+    } catch (e) {
+      alert(e)
+    }
+  }
 }
