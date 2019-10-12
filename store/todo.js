@@ -18,8 +18,8 @@ export const getters = {
   todo: state => state.todo,
   todos: state => state.todos,
   todonumber: state => (state.todos).length + 1,
-  mytodos: state => (uid) => {
-    return state.todos.filter(todo => todo.userId === uid)
+  fivemytodos: state => (uid) => {
+    return state.todos.filter(todo => todo.userId === uid).slice(0, 5)
   }
 }
 
