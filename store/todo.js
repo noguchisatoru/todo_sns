@@ -20,7 +20,8 @@ export const getters = {
   todonumber: state => (state.todos).length + 1,
   fivemytodos: state => (uid) => {
     return state.todos.filter(todo => todo.userId === uid && todo.state !== 'アーカイブ').slice(0, 5)
-  }
+  },
+  releasetodos: state => state.todos.filter(todo => todo.release === '公開')
 }
 
 export const actions = {

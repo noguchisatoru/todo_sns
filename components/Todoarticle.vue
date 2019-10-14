@@ -1,6 +1,6 @@
 <template>
   <section>
-    <article v-for="todo in todos" :key="todo.uId" class="media">
+    <article v-for="todo in releasetodos" :key="todo.uId" class="media">
       <figure class="media-left">
         <p class="image is-64x64">
           <img src="https://bulma.io/images/placeholders/128x128.png">
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -46,7 +46,8 @@ export default {
   computed: {
     ...mapState({
       todos: state => state.todo.todos
-    })
+    }),
+    ...mapGetters({ releasetodos: 'todo/releasetodos' })
   },
 
   mounted () {
