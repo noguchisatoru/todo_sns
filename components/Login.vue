@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import { auth } from '~/plugins/firebase'
 
 export default {
@@ -83,8 +84,12 @@ export default {
   },
 
   methods: {
+    ...mapMutations({
+      setTodo: 'todo/setTodo'
+    }),
     async doLogin () {
       try {
+        this.setTodo(0)
         const user = await auth().signInWithEmailAndPassword(this.email, this.password)
         if (user) {
           await this.$store.dispatch('user/setUserdata', auth().currentUser.uid)
@@ -112,6 +117,7 @@ export default {
 
     async googleLogin () {
       try {
+        this.setTodo(0)
         const googleAuth = new auth.GoogleAuthProvider()
         const googleUser = await auth().signInWithPopup(googleAuth)
         if (googleUser) {

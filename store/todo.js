@@ -19,7 +19,7 @@ export const getters = {
   todos: state => state.todos,
   todonumber: state => (state.todos).length + 1,
   fivemytodos: state => (uid) => {
-    return state.todos.filter(todo => todo.userId === uid).slice(0, 5)
+    return state.todos.filter(todo => todo.userId === uid && todo.state !== 'アーカイブ').slice(0, 5)
   }
 }
 
@@ -50,6 +50,18 @@ export const actions = {
     try {
       await todosRef.doc(String(statedata.documentId)).update({
         state: statedata.state
+      })
+    } catch (e) {
+      alert(e)
+    }
+  },
+
+  todoUpdate: async (context, updatedData) => {
+    try {
+      await todosRef.doc(String(updatedData.documentId)).update({
+        text: updatedData.text,
+        release: updatedData.release,
+        createdAt: updatedData.createdAt
       })
     } catch (e) {
       alert(e)
