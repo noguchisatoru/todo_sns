@@ -20,7 +20,8 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
-##実装予定
+
+## 実装予定
 【signin】
 
 ・ログイン機能
