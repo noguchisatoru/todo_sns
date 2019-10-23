@@ -5,12 +5,16 @@ const todosRef = db.collection('Todos')
 
 export const state = () => ({
   todo: null,
-  todos: []
+  todos: [],
+  radiostate: 'Free'
 })
 
 export const mutations = {
   setTodo (state, todo) {
     state.todo = todo
+  },
+  setState (state, radiostate) {
+    state.radiostate = radiostate
   }
 }
 
@@ -18,8 +22,18 @@ export const getters = {
   todo: state => state.todo,
   todos: state => state.todos,
   todonumber: state => (state.todos).length + 1,
+  getRadioState: state => state.radiostate,
   mytodos: state => (uid) => {
     return state.todos.filter(todo => todo.userId === uid)
+  },
+  mytodosfilter: state => (uid) => {
+    if (state.radiostate === 'ALL') {
+      return state.todos.filter(todo => todo.userId === uid)
+    } else if (state.radiostate === 'Archive') {
+      return state.todos.filter(todo => todo.userId === uid && todo.state === 'アーカイブ')
+    } else {
+      return state.todos.filter(todo => todo.userId === uid && todo.tag === state.radiostate)
+    }
   },
   fivemytodos: state => (uid) => {
     return state.todos.filter(todo => todo.userId === uid && todo.state !== 'アーカイブ').slice(0, 5)
@@ -70,5 +84,9 @@ export const actions = {
     } catch (e) {
       alert(e)
     }
+  },
+
+  commitMessege: (store, payload) => {
+    return store.commit('setState', payload)
   }
 }

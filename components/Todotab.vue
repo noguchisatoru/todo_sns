@@ -1,8 +1,9 @@
 <template>
   <section>
-    <b-tabs type="is-boxed" v-model="activeTab">
+    <b-tabs v-model="activeTab" type="is-boxed">
       <b-tab-item label="ToDoリスト">
-        <Mytodo />
+        <Radiobuttons />
+        <AllMytodo />
       </b-tab-item>
 
       <b-tab-item label="おきにいり">
@@ -13,13 +14,15 @@
 </template>
 
 <script>
-import Mytodo from '~/components/Mytodo.vue'
+import AllMytodo from '~/components/AllMytodo.vue'
 import Favtodo from '~/components/Favtodo.vue'
+import Radiobuttons from '~/components/Radiobuttons.vue'
 
 export default {
   components: {
-    Mytodo,
-    Favtodo
+    AllMytodo,
+    Favtodo,
+    Radiobuttons
   },
 
   data () {
