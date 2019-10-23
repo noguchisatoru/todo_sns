@@ -3,6 +3,7 @@ import { db } from '~/plugins/firebase'
 
 const usersRef = db.collection('Users')
 const followerRef = db.collection('Followers')
+const favoritesRef = db.collection('Favorites')
 
 export const state = () => ({
   user: null,
@@ -43,6 +44,12 @@ export const actions = {
       await followerRef.doc(userdata.uId).set({
 
         followingUserId: []
+
+      })
+
+      await favoritesRef.doc(userdata.uId).set({
+
+        favoriteIds: []
 
       })
     } catch (e) {
