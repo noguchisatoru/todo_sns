@@ -64,6 +64,8 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+import 'dayjs/locale/ja'
 import { mapMutations } from 'vuex'
 import { auth } from '~/plugins/firebase'
 
@@ -102,10 +104,11 @@ export default {
 
     async addUser () {
       try {
+        dayjs.locale('ja')
         const user = await auth().createUserWithEmailAndPassword(this.email, this.password)
         if (user) {
           const userdata = auth().currentUser
-          this.$store.dispatch('user/addUser', { userName: this.username, uId: userdata.uid })
+          this.$store.dispatch('user/addUser', { userName: this.username, uId: userdata.uid, createdAt: dayjs().format('YYYY/MM/DD/HH:mm:ss') })
           await this.$store.dispatch('user/setUserdata', userdata.uid)
           alert('登録完了' + userdata.email)
           this.$router.push('/home')

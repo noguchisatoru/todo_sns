@@ -35,7 +35,7 @@ export const actions = {
 
         userName: userdata.userName,
         userIntroduction: 'test',
-        createdAt: '2019年10月01日',
+        createdAt: userdata.createdAt,
         imageColor: 'blue'
 
       })
