@@ -109,6 +109,7 @@ export default {
         if (user) {
           const userdata = auth().currentUser
           this.$store.dispatch('user/addUser', { userName: this.username, uId: userdata.uid, createdAt: dayjs().format('YYYY/MM/DD/HH:mm:ss') })
+          await this.$store.dispatch('favorite/setFavorite', userdata.uid)
           await this.$store.dispatch('user/setUserdata', userdata.uid)
           alert('登録完了' + userdata.email)
           this.$router.push('/home')
