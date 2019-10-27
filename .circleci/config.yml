@@ -34,7 +34,7 @@ workflows:
   version: 2
   main:
     jobs:
-      - build # プロジェクトにあわせたテストを記述した場合はここのコメントアウトを外す
+      - build
       - deploy:
           filters:
             branches:
