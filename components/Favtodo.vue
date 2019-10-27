@@ -36,7 +36,7 @@ export default {
       user: state => state.user.user,
       favorites: state => state.favorite.favorites
     }),
-    ...mapGetters({ fivefavtodos: 'favorite/fivefavtodos' })
+    ...mapGetters({ favtodos: 'favorite/favtodos' })
   },
 
   mounted () {
