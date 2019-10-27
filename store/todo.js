@@ -28,7 +28,7 @@ export const getters = {
   },
   mytodosfilter: state => (uid) => {
     if (state.radiostate === 'ALL') {
-      return state.todos.filter(todo => todo.userId === uid)
+      return state.todos.filter(todo => todo.userId === uid && todo.state !== 'アーカイブ')
     } else if (state.radiostate === 'Archive') {
       return state.todos.filter(todo => todo.userId === uid && todo.state === 'アーカイブ')
     } else {

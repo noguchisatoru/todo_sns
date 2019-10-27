@@ -27,7 +27,7 @@
           ToDo
         </b-radio>
       </b-navbar-item>
-      <div class="level-item">
+      <b-navbar-item>
         <div class="field has-addons">
           <p class="control">
             <input class="input" type="text" placeholder="name or todo">
@@ -38,7 +38,7 @@
             </button>
           </p>
         </div>
-      </div>
+      </b-navbar-item>
     </template>
 
     <template slot="end">

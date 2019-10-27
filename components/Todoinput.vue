@@ -3,9 +3,9 @@
     <b-field label="ToDo">
       <b-input v-model="text" maxlength="100" type="textarea" />
     </b-field>
-    <div class="level is-mobile">
-      <div class="level-left">
-        <div class="block">
+    <div class="level is-mobile columns">
+      <div class="level-left column">
+        <div class="block is-mobile">
           <b-radio
             v-model="radio"
             name="name"
@@ -36,7 +36,7 @@
           </b-radio>
         </div>
       </div>
-      <div class="level-right">
+      <div class="level-right column">
         <b-switch
           v-model="release"
           true-value="公開"

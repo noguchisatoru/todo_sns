@@ -17,8 +17,8 @@
                 アーカイブ
               </b-button>
             </div>
-            <b-dropdown hoverable aria-role="list">
-              <button slot="trigger" class="button is-small">
+            <b-dropdown aria-role="list">
+              <button class="button is-small" slot="trigger">
                 <span>{{ mytodo.state }}</span>
                 <b-icon icon="menu-down" />
               </button>

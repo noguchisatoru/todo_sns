@@ -4,10 +4,10 @@
       MyToDo:{{ mytodos(user.uId).length }}
     </p>
     <p>
-      Follower:1
+      Follower:0
     </p>
     <p>
-      Follow:1
+      Follow:0
     </p>
   </div>
 </template>
