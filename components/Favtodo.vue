@@ -40,8 +40,6 @@ export default {
   },
 
   mounted () {
-    this.$store.dispatch('favorite/initFavorites', this.user.uId)
-    this.$store.dispatch('todo/initTodos')
   },
 
   methods: {

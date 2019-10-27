@@ -59,6 +59,7 @@ export default {
 
   mounted () {
     this.$store.dispatch('todo/initTodos')
+    this.$store.dispatch('favorite/initFavorites', this.user.uId)
   }
 
 }
