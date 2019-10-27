@@ -57,7 +57,6 @@ export default {
 
   methods: {
     async favorite (todo) {
-      console.log(todo)
       await this.$store.dispatch('favorite/addFavorite', { favTodo: todo, userId: this.user.uId })
     }
   }
