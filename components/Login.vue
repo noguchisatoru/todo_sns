@@ -128,7 +128,10 @@ export default {
           const googleData = auth().currentUser
           dayjs.locale('ja')
           await this.$store.dispatch('user/addUser', { userName: googleData.displayName, uId: googleData.uid, createdAt: dayjs().format('YYYY/MM/DD/HH:mm:ss') })
+          console.log('login')
+          await this.$store.dispatch('user/setUserdata', googleData.uid)
           this.$router.push('/home')
+          console.log('ok')
         }
       } catch (e) {
         alert(e)
