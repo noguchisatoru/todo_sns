@@ -18,14 +18,12 @@ export const mutations = {
 }
 
 export const getters = {
-  user: state => state.user,
-  users: state => state.users,
-  followers: state => state.followers
+  favtodos: state => state.favorites.favoriteIds
 }
 
 export const actions = {
-  initFavorites: firestoreAction((context) => {
-    return context.bindFirestoreRef('favorites', favoritesRef)
+  initFavorites: firestoreAction((context, uid) => {
+    return context.bindFirestoreRef('favorites', favoritesRef.doc(uid))
   }),
   setFavorite: firestoreAction(async (context, uid) => {
     try {
@@ -41,14 +39,11 @@ export const actions = {
   addFavorite: async ({ commit }, userdata) => {
     try {
       await favoritesRef.doc(String(userdata.userId)).update({
-        favoriteIds: firebase.firestore.FieldValue.arrayUnion(userdata.documentId)
+        favoriteIds: firebase.firestore.FieldValue.arrayUnion(userdata.favTodo)
       })
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log(e)
     }
-  },
-  logoutUser: ({ commit }) => {
-    commit('logoutUser')
   }
 }

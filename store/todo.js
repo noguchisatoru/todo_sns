@@ -32,7 +32,7 @@ export const getters = {
     } else if (state.radiostate === 'Archive') {
       return state.todos.filter(todo => todo.userId === uid && todo.state === 'アーカイブ')
     } else {
-      return state.todos.filter(todo => todo.userId === uid && todo.tag === state.radiostate)
+      return state.todos.filter(todo => todo.userId === uid && todo.tag === state.radiostate && todo.state !== 'アーカイブ')
     }
   },
   fivemytodos: state => (uid) => {

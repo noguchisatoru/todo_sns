@@ -20,7 +20,7 @@
               <span class="icon is-small"><i class="fas fa-reply" /></span>
             </a>
             <a class="level-item">
-              <span class="icon is-small" @click="favorite(todo.documentId)"><i class="fas fa-heart" /></span>
+              <span class="icon is-small" @click="favorite(todo)"><i class="fas fa-heart" /></span>
             </a>
           </div>
         </nav>
@@ -56,9 +56,9 @@ export default {
   },
 
   methods: {
-    async favorite (todoId) {
-      console.log(this.user.uId)
-      await this.$store.dispatch('favorite/addFavorite', { documentId: todoId, userId: this.user.uId })
+    async favorite (todo) {
+      console.log(todo)
+      await this.$store.dispatch('favorite/addFavorite', { favTodo: todo, userId: this.user.uId })
     }
   }
 }

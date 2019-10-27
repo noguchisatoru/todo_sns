@@ -1,36 +1,53 @@
 <template>
-  <article class="media">
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-          <br>
-          Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-        </p>
+  <section>
+    <article v-for="favtodo in favtodos" :key="favtodo.uId" class="media">
+      <div class="media-content">
+        <div class="content" @click="isImageModalActive = true">
+          <strong>{{ favtodo.todoAuthor }}</strong> <small>@{{ favtodo.userId }}</small>
+          <p>
+            {{ favtodo.text }}
+          </p>
+        </div>
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <p>{{ favtodo.tag }}</p>
+          </div>
+          <div class="level-right">
+            <small>{{ favtodo.createdAt }}</small>
+          </div>
+        </nav>
       </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <p>tag</p>
-        </div>
-        <div class="level-right">
-          <b-dropdown aria-role="list">
-            <button slot="trigger" class="button is-small">
-              <span>Click me!</span>
-              <b-icon icon="menu-down" />
-            </button>
-
-            <b-dropdown-item aria-role="listitem">
-              Action
-            </b-dropdown-item>
-            <b-dropdown-item aria-role="listitem">
-              Another action
-            </b-dropdown-item>
-            <b-dropdown-item aria-role="listitem">
-              Something else
-            </b-dropdown-item>
-          </b-dropdown>
-        </div>
-      </nav>
-    </div>
-  </article>
+    </article>
+  </section>
 </template>
+
+<script>
+import { mapState, mapGetters, mapMutations } from 'vuex'
+
+export default {
+  data () {
+    return {
+      isImageModalActive: false
+    }
+  },
+
+  computed: {
+    ...mapState({
+      user: state => state.user.user,
+      favorites: state => state.favorite.favorites
+    }),
+    ...mapGetters({ fivefavtodos: 'favorite/fivefavtodos' })
+  },
+
+  mounted () {
+    this.$store.dispatch('favorite/initFavorites', this.user.uId)
+    this.$store.dispatch('todo/initTodos')
+  },
+
+  methods: {
+    ...mapMutations({
+      setTodo: 'todo/setTodo'
+    })
+  }
+}
+</script>
