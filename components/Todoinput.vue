@@ -5,7 +5,7 @@
     </b-field>
     <div class="level is-mobile columns">
       <div class="level-left column">
-        <div class="block is-mobile">
+        <div class="block">
           <b-radio
             v-model="radio"
             name="name"
@@ -36,7 +36,7 @@
           </b-radio>
         </div>
       </div>
-      <div class="level-right column">
+      <div class="level-right">
         <b-switch
           v-model="release"
           true-value="公開"
