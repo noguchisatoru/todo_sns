@@ -121,12 +121,12 @@ export default {
 
     async googleLogin () {
       try {
-        dayjs.locale('ja')
         this.setTodo(0)
         const googleAuth = new auth.GoogleAuthProvider()
         const googleUser = await auth().signInWithPopup(googleAuth)
         if (googleUser) {
           const googleData = auth().currentUser
+          dayjs.locale('ja')
           await this.$store.dispatch('user/addUser', { userName: googleData.displayName, uId: googleData.uid, createdAt: dayjs().format('YYYY/MM/DD/HH:mm:ss') })
           this.$router.push('/home')
         }

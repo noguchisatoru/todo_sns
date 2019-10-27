@@ -1,6 +1,6 @@
 <template>
   <section>
-    <article v-for="mytodo in fivemytodos(user.uId)" :key="mytodo.uId" class="media">
+    <article v-for="mytodo in tenmytodos(user.uId)" :key="mytodo.uId" class="media">
       <div class="media-content">
         <div class="content" @click="isImageModalActive = true, setTodo(mytodo)">
           <p>
@@ -89,7 +89,7 @@ export default {
       todo: state => state.todo.todo,
       todos: state => state.todo.todos
     }),
-    ...mapGetters({ fivemytodos: 'todo/fivemytodos',
+    ...mapGetters({ tenmytodos: 'todo/tenmytodos',
       todotest: 'todo/todos' })
   },
 

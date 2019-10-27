@@ -13,13 +13,6 @@
               <Morebutton />
             </div>
           </div>
-          <div class="tile is-child box">
-            <p class="title">
-              FavToDo
-            </p>
-            <Favtodo />
-            <Morebutton />
-          </div>
         </div>
       </div>
       <div class="tile is-vertical is-parent">
@@ -38,7 +31,6 @@ import Profilecard from '~/components/Profilecard.vue'
 import Mytodo from '~/components/Mytodo.vue'
 import Todoinput from '~/components/Todoinput.vue'
 import Todoarticle from '~/components/Todoarticle.vue'
-import Favtodo from '~/components/Favtodo.vue'
 import Morebutton from '~/components/Morebutton.vue'
 
 export default {
@@ -51,7 +43,6 @@ export default {
     Mytodo,
     Todoinput,
     Todoarticle,
-    Favtodo,
     Morebutton
   },
 

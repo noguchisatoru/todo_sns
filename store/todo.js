@@ -35,8 +35,8 @@ export const getters = {
       return state.todos.filter(todo => todo.userId === uid && todo.tag === state.radiostate && todo.state !== 'アーカイブ')
     }
   },
-  fivemytodos: state => (uid) => {
-    return state.todos.filter(todo => todo.userId === uid && todo.state !== 'アーカイブ').slice(0, 5)
+  tenmytodos: state => (uid) => {
+    return state.todos.filter(todo => todo.userId === uid && todo.state !== 'アーカイブ').slice(0, 10)
   },
   releasetodos: state => state.todos.filter(todo => todo.release === '公開')
 }
