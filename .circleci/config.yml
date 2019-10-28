@@ -38,4 +38,4 @@ workflows:
       - deploy:
           filters:
             branches:
-              only: develop
+              only: feature/home
